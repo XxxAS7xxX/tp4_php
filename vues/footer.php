@@ -3,7 +3,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Confirmation de suppression</h5>
+        <h5 class="modal-title">hhhhhhaaaaaaaaaaaa</h5>
       </div>
       <div class="modal-body">
         <p>Voulez vous supprimer cette nationalité</p>
