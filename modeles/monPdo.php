@@ -7,10 +7,10 @@
 class MonPdo
 {
 
-private static $serveur='mysql:host=localhost';
-private static $bdd='dbname=biblio'; 
-private static $user='root' ; 
-private static $mdp='' ;
+private static $serveur='mysql:host=srvmysql.btssio.dedyn.io';
+private static $bdd='dbname=DELPIER_biblio'; 
+private static $user='DELPIER' ; 
+private static $mdp='20050924' ;
 private static $monPdo;
 private static $unPdo = null;
 

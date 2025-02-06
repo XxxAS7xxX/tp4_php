@@ -12,7 +12,7 @@ switch($uc){
     case 'accueil' :
         include('vues/Accueil.php');
         break;
-    case 'continents' :
+    case 'continent' :
         include('Controllers/continentController.php');
         break;
 }
