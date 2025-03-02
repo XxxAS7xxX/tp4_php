@@ -3,11 +3,11 @@ $action=$_GET['action'];
 switch($action){
     case 'list':
         $lesContinents=Continent::findAll();
-        include('vues/listeContinent.php');
+        include('vues/continent/listeContinent.php');
         break;
     case 'add' :
         $mode="Ajouter";
-        include('vues/formContinent.php');
+        include('vues/continent/formContinent.php');
         break;
     case 'update':
         $mode="Modifier";

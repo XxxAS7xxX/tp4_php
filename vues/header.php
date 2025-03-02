@@ -43,23 +43,23 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion des genres</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Liste des genres</a>
-          <a class="dropdown-item" href="#">Ajouter un genre</a>
+          <a class="dropdown-item" href="index.php?uc=genre&action=list">Liste des genres</a>
+          <a class="dropdown-item" href="index.php?uc=genre&action=add">Ajouter un genre</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-user"></i>  Gestion des auteurs</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Liste des auteurs</a>
-          <a class="dropdown-item" href="#">Ajouter un auteur</a>
+          <a class="dropdown-item" href="index.php?uc=auteur&action=list">Liste des auteurs</a>
+          <a class="dropdown-item" href="index.php?uc=auteur&action=add">Ajouter un auteur</a>
           <a class="dropdown-item" href="#">Rechercher un auteur</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-flag"></i>  Gestion des nationalités</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="listeNationalites.php">Liste des nationalités</a>
-          <a class="dropdown-item" href="formNationalite.php">Ajouter un nationalité</a>
+          <a class="dropdown-item" href="index.php?uc=nationalite&action=list">Liste des nationalités</a>
+          <a class="dropdown-item" href="index.php?uc=nationalite&action=add">Ajouter un nationalité</a>
         </div>
       </li>
       <li class="nav-item dropdown">
