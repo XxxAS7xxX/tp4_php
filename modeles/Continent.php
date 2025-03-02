@@ -16,7 +16,19 @@ class Continent{
     private $libelle;
 
 
+    /**
+     * Set numero du continent
+     *
+     * @param  int  $num  numero du continent
+     *
+     * @return  self
+     */ 
+    public function setNum(int $num) :self
+    {
+        $this->num = $num;
 
+        return $this;
+    }
 
     /**
      * Get the value of num
@@ -120,18 +132,6 @@ class Continent{
         return $nb;
     }
 
-    /**
-     * Set numero du continent
-     *
-     * @param  int  $num  numero du continent
-     *
-     * @return  self
-     */ 
-    public function setNum(int $num) :self
-    {
-        $this->num = $num;
 
-        return $this;
-    }
 }
 ?>

@@ -11,10 +11,19 @@ switch($action){
         break;
     case 'update':
         $mode="Modifier";
+        $continent=Continent::findById($_GET['num']);
         include('vues/formContinent.php');
         break;
     case 'delete' :
-    
+        $continent=Continent::findById($_GET['num']);
+        $nb=Continent::delete($continent);
+        if($nb==1){
+            $_SESSION['message']=["success"=>"Le continent a bien été supprimé"];
+        }else{
+            $_SESSION['message']=["success"=>"Le continent n'a pas été supprimé"];
+        }
+        header('location:index.php?uc=continent&action=list');
+        exit();
         break;
     case 'valideForm' :
         if(empty($_POST['num'])){
@@ -34,6 +43,7 @@ switch($action){
             $_SESSION['message']=["success"=>"Le continent n'a pas été $message"];
         }
         header('location:index.php?uc=continent&action=list');
+        exit();
         break;
 }
 ?>

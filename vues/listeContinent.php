@@ -21,7 +21,7 @@
                 echo "<td scope='row' class='col-md-8'>" . $continent->getLibelle() . "</td>";
                 echo "<td scope='row' class='col-md-2'>
                     <a href='index.php?uc=continent&action=update&num=".$continent->getNum()."' class='btn btn-info'><i class='fas fa-pen'></i></a>";
-                echo "<a href='#modalSuppression' data-toggle='modal' data-message='Voulez vous supprimer cette nationalité ?' data-suppression='index.php?uc=continent&action=delete&num=".$continent->getNum()."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a>" . "</td>";
+                echo "<a href='#modalSuppression' data-toggle='modal' data-message='Voulez vous supprimer ce continent ?' data-suppression='index.php?uc=continent&action=delete&num=".$continent->getNum()."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a>" . "</td>";
                 echo "</tr>";
             }
             ?>
