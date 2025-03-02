@@ -7,7 +7,7 @@ include "modeles/Livre.php";
 include "modeles/Auteur.php";
 include "modeles/monPdo.php";
 include "vues/header.php";
-include "vues/messageFlash.php";
+include "vues/messagesFlash.php";
 
 $uc =empty($_GET['uc']) ? "accueil" : $_GET['uc'];
 
