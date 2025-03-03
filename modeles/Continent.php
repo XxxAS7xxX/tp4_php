@@ -81,7 +81,7 @@ class Continent{
 
         $req=MonPdo::getInstance()->prepare("Select * from continent where num= :id");
         $req->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'Continent');
-        $req->blindParam(':id',$id);
+        $req->bindParam(':id',$id);
         $req->execute();
         $lesResultats=$req->fetch();
         return $lesResultats;
@@ -97,7 +97,7 @@ class Continent{
 
         $req=MonPdo::getInstance()->prepare("insert into continent(libelle) values(:libelle)");
         $libelle=$continent->getLibelle();
-        $req->blindParam(':id', $libelle);
+        $req->bindParam(':id', $libelle);
         $nb=$req->execute();
         return $nb;
     }
@@ -113,8 +113,8 @@ class Continent{
         $req=MonPdo::getInstance()->prepare("update continent set libelle= :libelle where num= :id");
         $num=$continent->getNum();
         $libelle=$continent->getLibelle();
-        $req->blindParam(':id', $num);
-        $req->blindParam(':libelle', $libelle);
+        $req->bindParam(':id', $num);
+        $req->bindParam(':libelle', $libelle);
         $nb=$req->execute();
         return $nb;
     }
@@ -127,7 +127,7 @@ class Continent{
      */
     public static function delete(Continent $continent) :int{
         $req=MonPdo::getInstance()->prepare("delete from continent where num= :id");
-        $req->blindParam(':id', $continent->getNum());
+        $req->bindParam(':id', $continent->getNum());
         $nb=$req->execute();
         return $nb;
     }

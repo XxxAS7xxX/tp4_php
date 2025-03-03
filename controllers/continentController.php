@@ -12,7 +12,7 @@ switch($action){
     case 'update':
         $mode="Modifier";
         $continent=Continent::findById($_GET['num']);
-        include('vues/formContinent.php');
+        include('vues/continent/formContinent.php');
         break;
     case 'delete' :
         $continent=Continent::findById($_GET['num']);
@@ -27,7 +27,7 @@ switch($action){
         break;
     case 'valideForm' :
         if(empty($_POST['num'])){
-            $continent->setLibelle($_POST['num']);
+            $continent->setLibelle($_POST['libelle']);
             $nb=Continent::add($continent);
             $message = "ajouté";
         }else{
