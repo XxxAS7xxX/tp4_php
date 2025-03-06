@@ -4,7 +4,7 @@
         <div class="col-9">
             <h2>Liste des livres</h2>
         </div>
-        <div class="col-3"><a href="index.php?uc=livres&action=add" class='btn btn-success'><i class="fas fa-plus-circle"></i> Créer un livre</a> </div>
+        <div class="col-3"><a href="index.php?uc=livre&action=add" class='btn btn-success'><i class="fas fa-plus-circle"></i> Créer un livre</a> </div>
         
     </div>
 
@@ -37,8 +37,8 @@
             echo "<td class='col-md-1'>".$livre->getGenre()."</td>";
 
             echo "<td class='col-md-2'>
-                <a href='index.php?uc=livres&action=update&num=".$livre->getNum()."' class='btn btn-primary'><i class='fas fa-pen'></i></a>
-                <a href='#modalSuppression' data-toggle='modal' data-message='Voulez vous supprimer ce livre ?' data-suppression='index.php?uc=livres&action=delete&num=".$livre->getNum()."' class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
+                <a href='index.php?uc=livre&action=update&num=".$livre->getNum()."' class='btn btn-primary'><i class='fas fa-pen'></i></a>
+                <a href='#modalSuppression' data-toggle='modal' data-message='Voulez vous supprimer ce livre ?' data-suppression='index.php?uc=livre&action=delete&num=".$livre->getNum()."' class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
             </td>";
             echo "</tr>";
         }

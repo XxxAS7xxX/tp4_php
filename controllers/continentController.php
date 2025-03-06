@@ -26,6 +26,7 @@ switch($action){
         exit();
         break;
     case 'valideForm' :
+        $continent = new Continent();
         if(empty($_POST['num'])){
             $continent->setLibelle($_POST['libelle']);
             $nb=Continent::add($continent);

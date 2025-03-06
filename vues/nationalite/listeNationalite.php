@@ -2,17 +2,17 @@
     
     <div class="row pt-3">
         <div class="col-9"><h2>Liste des nationalités</h2></div>
-        <div class="col-3"><a href="index.php?uc=nationalites&action=add" class='btn btn-success'><i class="fas fa-plus-circle"></i> Créer une nationalité</a> </div>
+        <div class="col-3"><a href="index.php?uc=nationalite&action=add" class='btn btn-success'><i class="fas fa-plus-circle"></i> Créer une nationalité</a> </div>
         
     </div>
 
-    <form id="formRecherche" action="index.php?uc=nationalites&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
+    <form id="formRecherche" action="index.php?uc=nationalite&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
     <div class="row">
             <div class="col">
-                <input type="text" class='form-control' id='libelle' onInput="document.getElementById('formRecherche').submit()" placehoder='Saisir le libellé' name='libelle' value="<?php echo $libelle; ?>">
+                <input type="text" class='form-control' id='libelle' onInput="document.getElementById('formRecherche').submit()" placeholder='Saisir le libellé' name='libelle' value="<?php echo $libelle; ?>">
             </div>
             <div class="col">
-                <select name="continent" class="form-control" onChange="document.getElementById('formRecherche').submit()">
+                <select name="continentSel" class="form-control" onChange="document.getElementById('formRecherche').submit()">
                         <?php 
                         echo "<option value='Tous'>Tous les continents</option>";
                         foreach($lesContinents as $continent){

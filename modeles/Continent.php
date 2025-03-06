@@ -97,7 +97,7 @@ class Continent{
 
         $req=MonPdo::getInstance()->prepare("insert into continent(libelle) values(:libelle)");
         $libelle=$continent->getLibelle();
-        $req->bindParam(':id', $libelle);
+        $req->bindParam(':libelle', $libelle);
         $nb=$req->execute();
         return $nb;
     }
