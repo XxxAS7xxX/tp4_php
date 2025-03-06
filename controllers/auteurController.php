@@ -1,23 +1,24 @@
 <?php
 $action=$_GET['action'];
 switch($action){
-        case 'list';
+        case 'list':
             $lesAuteurs = Auteur::findAll();
             include('vues/auteur/listeAuteur.php');
             break;
 
-        case 'add';
+        case 'add':
             $mode="Ajouter";
+            $lesAuteurs=Auteur::findAll();
             include('vues/auteur/formAuteur.php');
             break;
 
-        case 'update';
+        case 'update':
             $mode="Modifier";
             $auteur=Auteur::findById($_GET['num']);
             include('vues/auteur/formAuteur.php');
             break;
 
-        case 'delete';
+        case 'delete':
             $auteur=Auteur::findById($_GET['num']);
             $nb=Auteur::delete($auteur);
             if($nb==1){
@@ -28,7 +29,7 @@ switch($action){
             header('location:index.php?uc=auteur&action=list');
             break;
 
-        case 'valideForm';
+        case 'valideForm':
             $auteur=new Auteur();
             if(empty($_POST['num'])){//cas d'une création
                 $auteur->setNom($_POST['nom']);

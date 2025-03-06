@@ -1,23 +1,23 @@
 <?php
 $action=$_GET['action'];
 switch($action){
-        case 'list';
+        case 'list':
             $lesGenres = Genre::findAll();
             include('vues/genre/listeGenre.php');
             break;
 
-        case 'add';
+        case 'add':
             $mode="Ajouter";
             include('vues/genre/formGenre.php');
             break;
 
-        case 'update';
+        case 'update':
             $mode="Modifier";
             $genre=Genre::findById($_GET['num']);
             include('vues/genre/formGenre.php');
             break;
 
-        case 'delete';
+        case 'delete':
             $genre=Genre::findById($_GET['num']);
             $nb=Genre::delete($genre);
             if($nb==1){
