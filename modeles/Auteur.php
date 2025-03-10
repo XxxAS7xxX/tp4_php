@@ -130,7 +130,29 @@ use PSpell\Config;
                 return $this;
         }
 
+                /**
+         * Get nationalite
+         *
+         * @return  string
+         */ 
+        public function getNumNationalite()
+        {
+                return $this->numNationalite;
+        }
 
+        /**
+         * Set nationalite
+         *
+         * @param  string  $numNationalite  nationalite
+         *
+         * @return  self
+         */ 
+        public function setNumNationalite(string $numNationalite)
+        {
+                $this->numNationalite = $numNationalite;
+
+                return $this;
+        }
 
         /**
          * retourne l'ensemble des auteurs
@@ -139,8 +161,8 @@ use PSpell\Config;
          */
         public static function findAll() :array
         {
-            $req=MonPdo::getInstance()->prepare("Select num, nom, prenom from auteur");
-            $req->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'Auteur');
+            $req=MonPdo::getInstance()->prepare("Select auteur.*, nationalite.libelle as libnation from auteur join nationalite on auteur.numNationalite=nationalite.num");
+            $req->setFetchMode(PDO::FETCH_OBJ);
             $req->execute();
             $lesResultats=$req->fetchAll();
             return $lesResultats;
@@ -174,7 +196,7 @@ use PSpell\Config;
             $req=MonPdo::getInstance()->prepare("insert into auteur(nom,prenom,nationalite) values(:nom,:prenom,:nationalite)");
             $nom=$auteur->getNom();
             $prenom=$auteur->getPrenom();
-            $nationalite=$auteur->getNationalite();
+            $nationalite=$auteur->getNationalite()->getNum();
             $req->bindParam(':nom',$nom);
             $req->bindParam(':prenom', $prenom);
             $req->bindParam(':nationalite', $nationalite);
@@ -196,7 +218,7 @@ use PSpell\Config;
             $num=$auteur->getNum();
             $nom=$auteur->getNom();
             $prenom=$auteur->getPrenom();
-            $nationalite=$auteur->getNationalite();
+            $nationalite=$auteur->getNationalite()->getNum;
 
             $req->bindParam(':id',$num);
             $req->bindParam(':nom',$nom);
@@ -223,4 +245,6 @@ use PSpell\Config;
         }
 
         
+
+
     }
