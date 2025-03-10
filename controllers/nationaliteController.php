@@ -41,12 +41,13 @@ switch($action){
         case 'validerForm':
             $nationalite=new Nationalite();
             $continent=Continent::findById($_POST['continent']);
-            $nationalite->setLibelle($_POST['libelle']) //2 setter
+            $nationalite->setLibelle($_POST['libelle'])
                         ->setContinent($continent);
-            if(empty($_POST['num'])){//cas d'une création
+            if(empty($_POST['num'])){
                 $nb=Nationalite::add($nationalite);
                 $message ="ajouté"; 
             }else{//cas d'une modif
+                $nationalite->setNum(($_POST["num"]));
                 $nb=Nationalite::update($nationalite);
                 $message ="modifié";
             }
@@ -55,6 +56,6 @@ switch($action){
             }else{
                 $_SESSION['message']=["danger"=>"Le nationalite n'a pas été $message"];
             }
-            header('location:index.php?uc=nationalites&action=list');
+            header('location:index.php?uc=nationalite&action=list');
             break;
 }

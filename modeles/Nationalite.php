@@ -31,6 +31,21 @@ class Nationalite{
     return $this->num;
     }
 
+    
+    /**
+     * Set numero du nationalite
+     *
+     * @param  int  $num  numero du nationalite
+     *
+     * @return  self
+     */ 
+    public function setNum(int $num)
+    {
+        $this->num = $num;
+
+        return $this;
+    }
+
     /**
      * lit le libelle
      */ 
@@ -74,6 +89,26 @@ class Nationalite{
         return $this;
     }
 
+            /**
+         * renvoie l'objet continent associé
+         *
+         * @return Continent
+         */
+        public function getContinent() : Continent
+        {
+            return Continent::findById($this->numContinent);
+        }
+
+        /**
+         * Set the value of numContinent
+         *
+         * @return  self
+         */ 
+        public function setContinent(Continent $continent) :self
+        {
+                $this->numContinent = $continent->getNum();
+                return $this;
+        }
     /**
      * Retourne l'ensemble des nationalite
      *
@@ -122,7 +157,7 @@ class Nationalite{
 
         $req=MonPdo::getInstance()->prepare("insert into nationalite(libelle,numContinent) values(:libelle, :numContinent)");
         $req->bindParam(':libelle', $nationalite->getLibelle());
-        $req->bindParam(':numContinent', $nationalite->numContinent());
+        $req->bindParam(':numContinent', $nationalite->numContinent);
         $nb=$req->execute();
         return $nb;
     }
@@ -138,7 +173,7 @@ class Nationalite{
         $req=MonPdo::getInstance()->prepare("update nationalite set libelle= :libelle, numContinent= :numContinent where num= :id");
         $req->bindParam(':id', $nationalite->getNum());
         $req->bindParam(':libelle', $nationalite->getLibelle());
-        $req->bindParam(':numContinent', $nationalite->numContinent());
+        $req->bindParam(':numContinent', $nationalite->numContinent);
         $nb=$req->execute();
         return $nb;
     }
@@ -155,7 +190,5 @@ class Nationalite{
         $nb=$req->execute();
         return $nb;
     }
-
-
 }
 ?>
