@@ -28,7 +28,7 @@ switch($action){
             header('location:index.php?uc=genre&action=list');
             break;
 
-        case 'valideForm';
+        case 'valideForm':
             $genre=new Genre();
             if(empty($_POST['num'])){//cas d'une création
                 $genre->setLibelle($_POST['libelle']);
@@ -45,6 +45,6 @@ switch($action){
             }else{
                 $_SESSION['message']=["danger"=>"Le genre n'a pas été $message"];
             }
-            header('location:index.php?uc=genres&action=list');
+            header('location:index.php?uc=genre&action=list');
             break;
 }

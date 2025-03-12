@@ -15,6 +15,7 @@ switch($action){
         case 'update':
             $mode="Modifier";
             $auteur=Auteur::findById($_GET['num']);
+            $lesNationalites=Nationalite::findAll();
             include('vues/auteur/formAuteur.php');
             break;
 
@@ -55,6 +56,6 @@ switch($action){
             }else{
                 $_SESSION['message']=["danger"=>"Le auteur n'a pas été $message"];
             }
-            header('location:index.php?uc=auteurs&action=list');
+            header('location:index.php?uc=auteur&action=list');
             break;
 }

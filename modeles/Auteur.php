@@ -193,13 +193,13 @@ use PSpell\Config;
          */
         public static function add(Auteur $auteur): int
         {
-            $req=MonPdo::getInstance()->prepare("insert into auteur(nom,prenom,nationalite) values(:nom,:prenom,:nationalite)");
+            $req=MonPdo::getInstance()->prepare("insert into auteur(nom,prenom,numNationalite) values(:nom,:prenom,:numNationalite)");
             $nom=$auteur->getNom();
             $prenom=$auteur->getPrenom();
             $nationalite=$auteur->getNationalite()->getNum();
             $req->bindParam(':nom',$nom);
             $req->bindParam(':prenom', $prenom);
-            $req->bindParam(':nationalite', $nationalite);
+            $req->bindParam(':numNationalite', $nationalite);
             $nb=$req->execute();
             return $nb;
         }
@@ -214,18 +214,19 @@ use PSpell\Config;
          */
         public static function update(Auteur $auteur): int
         {
-            $req=MonPdo::getInstance()->prepare("update auteur set(nom=:nom, prenom=:prenom, nationalite=:nationalite) where num= :id");
-            $num=$auteur->getNum();
-            $nom=$auteur->getNom();
-            $prenom=$auteur->getPrenom();
-            $nationalite=$auteur->getNationalite()->getNum;
+                $req = MonPdo::getInstance()->prepare("UPDATE auteur SET nom = :nom, prenom = :prenom, numNationalite = :nationalite WHERE num = :num");
 
-            $req->bindParam(':id',$num);
-            $req->bindParam(':nom',$nom);
-            $req->bindParam(':prenom',$prenom);
-            $req->bindParam(':nationalite',$nationalite);
-            $nb=$req->execute();
-            return $nb;
+                $num = $auteur->getNum(); // ID de l'auteur
+                $nom = $auteur->getNom();
+                $prenom = $auteur->getPrenom();
+                $nationalite = $auteur->getNationalite()->getNum(); // ID de la nationalité
+
+                $req->bindParam(':num', $num);
+                $req->bindParam(':nom', $nom);
+                $req->bindParam(':prenom', $prenom);
+                $req->bindParam(':nationalite', $nationalite);
+
+                return $req->execute();
         }
 
 
@@ -243,8 +244,4 @@ use PSpell\Config;
             $nb=$req->execute();
             return $nb;
         }
-
-        
-
-
     }

@@ -301,8 +301,9 @@ use PSpell\Config;
          */
         public static function findAll() :array
         {
-            $req=MonPdo::getInstance()->prepare("Select * from livre");
-            $req->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'Livre');
+            $req=MonPdo::getInstance()->prepare("Select livre.* , auteur.nom as nomauteur, genre.libelle as nomgenre from livre 
+            join genre on livre.numGenre=genre.num join auteur on livre.numAuteur=auteur.num");
+            $req->setFetchMode(PDO::FETCH_OBJ);
             $req->execute();
             $lesResultats=$req->fetchAll();
             return $lesResultats;
@@ -333,9 +334,25 @@ use PSpell\Config;
          */
         public static function add(Livre $livre): int
         {
-            $req=MonPdo::getInstance()->prepare("insert into livre values(:num,:isbn,:titre,:prix,:editeur,:annee,:langue,:auteur,:genre)");
-            $titre=$livre->getTitre();
-            $req->bindParam(':num', $titre);
+            $req=MonPdo::getInstance()->prepare("insert into livre(isbn,titre,prix,editeur,annee,langue,numauteur,numgenre) values(:isbn,:titre,:prix,:editeur,:annee,:langue,:numauteur,:numgenre)");
+
+                $isbn = $livre->isbn; 
+                $titre = $livre->titre;
+                $prix = $livre->prix;
+                $editeur = $livre->editeur;
+                $annee = $livre->annee;
+                $langue = $livre->langue;
+                $auteur = $livre->auteur;
+                $genre = $livre->genre;
+                
+                $req->bindParam(':isbn', $isbn);
+                $req->bindParam(':titre', $titre);
+                $req->bindParam(':prix', $prix);
+                $req->bindParam(':editeur', $editeur);
+                $req->bindParam(':annee', $annee);
+                $req->bindParam(':langue', $langue);
+                $req->bindParam(':numauteur', $auteur);
+                $req->bindParam(':numgenre', $genre);
             $nb=$req->execute();
             return $nb;
         }
@@ -350,11 +367,26 @@ use PSpell\Config;
          */
         public static function update(Livre $livre): int
         {
-            $req=MonPdo::getInstance()->prepare("update livre set titre= :titre where num= :id");
-            $num=$livre->getNum();
-            $titre=$livre->getTitre();
-            $req->bindParam(':id',$num);
-            $req->bindParam(':titre',$titre);
+            $req=MonPdo::getInstance()->prepare("update livre set isbn=:isbn, titre=:titre, prix=:prix, editeur=:editeur, annee=:annee, langue=:langue,numauteur=:numauteur, numgenre=:numgenre WHERE num = :num");
+                $num = $livre->getNum();
+                $isbn = $livre->isbn; 
+                $titre = $livre->titre;
+                $prix = $livre->prix;
+                $editeur = $livre->editeur;
+                $annee = $livre->annee;
+                $langue = $livre->langue;
+                $auteur = $livre->getAuteur()->getNum();
+                $genre = $livre->getGenre()->getNum();
+                
+                $req->bindParam(':num', $num);
+                $req->bindParam(':isbn', $isbn);
+                $req->bindParam(':titre', $titre);
+                $req->bindParam(':prix', $prix);
+                $req->bindParam(':editeur', $editeur);
+                $req->bindParam(':annee', $annee);
+                $req->bindParam(':langue', $langue);
+                $req->bindParam(':numauteur', $auteur);
+                $req->bindParam(':numgenre', $genre);
             $nb=$req->execute();
             return $nb;
         }
