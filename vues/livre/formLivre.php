@@ -28,18 +28,19 @@
 
                 <div class="form-group">
                     <label for="auteur" > auteur </label>
+                    
                     <select name="auteur" class="form-control">
-                    <?php 
+                    <?php var_dump($livre);
                         foreach($lesAuteurs as $auteur){
                             if($mode == "Modifier"){
-                            $selection=$auteur->num== $lauteur->getAuteur()->getNum() ? 'selected' : '';
+                            $selection=$auteur->num== $livre->getNumAuteur()->getNum() ? 'selected' : '';
                             }
                             echo "<option value='".$auteur->num ."'". $selection .">". $auteur->nom ."</option>";
                         }
                         ?>
                     </select>
                 </div>
-                <input type="hidden" id="num" name="num" value="<?php if($mode == "Modifier") {echo $lauteur->getNum();} ?>">
+                <input type="hidden" id="num" name="num" value="<?php if($mode == "Modifier") {echo $livre->getNum();} ?>">
 
                 <div class="form-group">
                     <label for="genre" > genre </label>
@@ -47,14 +48,14 @@
                     <?php 
                         foreach($lesGenres as $genre){
                             if($mode == "Modifier"){
-                            $selection=$genre->getNum()== $legenre->getGenre()->getNum() ? 'selected' : '';
+                            $selection=$genre->getNum()== $livre->getNumGenre()->getNum() ? 'selected' : '';
                             }
                             echo "<option value='".$genre->getNum() ."'". $selection .">". $genre->getLibelle() ."</option>";
                         }
                         ?>
                     </select>
                 </div>
-                <input type="hidden" id="num" name="num" value="<?php if($mode == "Modifier") {echo $legenre->getNum();} ?>">
+                <input type="hidden" id="num" name="num" value="<?php if($mode == "Modifier") {echo $livre->getNum();} ?>">
 
                 
 

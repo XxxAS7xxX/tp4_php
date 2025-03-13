@@ -59,7 +59,9 @@ use PSpell\Config;
          */
         private $genre;
 
+        private $numGenre;
 
+        private $numAuteur;
                 //GETSETTER DU NUM
         /**
          * Get the value of num
@@ -375,8 +377,8 @@ use PSpell\Config;
                 $editeur = $livre->editeur;
                 $annee = $livre->annee;
                 $langue = $livre->langue;
-                $auteur = $livre->getAuteur()->getNum();
-                $genre = $livre->getGenre()->getNum();
+                $auteur = $livre->getNumAuteur()->getNum();
+                $genre = $livre->getNumGenre()->getNum();
                 
                 $req->bindParam(':num', $num);
                 $req->bindParam(':isbn', $isbn);
@@ -409,4 +411,44 @@ use PSpell\Config;
 
 
 
+
+        /**
+         * Get the value of numGenre
+         */ 
+        public function getNumGenre()
+        {
+                return Genre::findById($this->numGenre);
+        }
+
+        /**
+         * Set the value of numGenre
+         *
+         * @return  self
+         */ 
+        public function setNumGenre($numGenre)
+        {
+                $this->numGenre = $genre->getNum();
+
+                return $this;
+        }
+
+        /**
+         * Get the value of numAuteur
+         */ 
+        public function getNumAuteur()
+        {
+                return Auteur::findById($this->numAuteur);
+        }
+
+        /**
+         * Set the value of numAuteur
+         *
+         * @return  self
+         */ 
+        public function setNumAuteur($numAuteur)
+        {
+                $this->numAuteur = $auteur->getNum();
+
+                return $this;
+        }
     }

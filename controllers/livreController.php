@@ -4,7 +4,7 @@ switch($action){
         case 'list';
             $lesLivres = Livre::findAll();
             $lesAuteurs=Auteur::findAll();
-            $lesGenres=Auteur::findAll();
+            $lesGenres=Genre::findAll();
             include('vues/livre/listeLivre.php');
             break;
 
@@ -18,7 +18,7 @@ switch($action){
         case 'update';
             $mode="Modifier";
             $lesAuteurs=Auteur::findAll();
-            $lesGenres=Auteur::findAll();
+            $lesGenres=Genre::findAll();
             $livre=Livre::findById($_GET['num']);
             include('vues/livre/formLivre.php');
             break;
